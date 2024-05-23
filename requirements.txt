@@ -1,0 +1,8 @@
+# App 
+redis
+numpy
+adafruit-circuitpython-dht
+
+# Tests
+pytest
+
