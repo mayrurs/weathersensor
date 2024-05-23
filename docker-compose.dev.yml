@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   sensor:
     build:
@@ -18,6 +16,9 @@ services:
       - /src/sensor/entrypoints/run_dht22.py
     networks:
       - sensorhub
+
+  redis:
+    image: redis:alpine
   
 networks:
   sensorhub:
