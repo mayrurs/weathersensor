@@ -1,0 +1,23 @@
+services:
+  sensor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sensor-image
+    environment:
+      - REDIS_HOST=redis
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    privileged: true
+    volumes:
+      - ./src:/src
+    entrypoint:
+      - python
+      - /src/sensor/entrypoints/run_dht22.py
+    networks:
+      - sensorhub
+
+networks:
+  sensorhub:
+    external: true
+
