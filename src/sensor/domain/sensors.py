@@ -57,7 +57,7 @@ class Dht22(Sensor):
         while not temperature:
             try:
                 temperature = self.sensor.temperature
-                return SensorData('temperature', temperature, datetime.now())
+                return SensorData('temperature', int(temperature), datetime.now())
             except RuntimeError as error:
                 time.sleep(0.1)
                 continue
