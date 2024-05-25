@@ -53,16 +53,15 @@ class Dht22(Sensor):
         self.sensor = adafruit_dht.DHT22(pin)
 
     def _read(self) -> SensorData:
-        temperatue = None
+        temperature = None
         while not temperature:
             try:
                 temperature = self.sensor.temperature
-                SensorData('temperature', temperature, datetime.now())
+                return SensorData('temperature', temperature, datetime.now())
             except RuntimeError as error:
                 time.sleep(0.1)
                 continue
             except Exception as error:
                 self.sensor.exit()
                 raise error
-            time.sleep(0.1)
 
